@@ -18,9 +18,10 @@ dayjs.extend(window.dayjs_plugin_timezone);
 
 
 var weatherApiUrl = `http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=${apiKey}`;
+console.log(weatherApiUrl);
 
-function weatherData(weatherApiUrl) {
-    fetch(weatherApiUrl)
+function weatherData(weatherApi) {
+    fetch(weatherApi)
     .then(function(res) {
         res.json()
     })
@@ -28,3 +29,5 @@ function weatherData(weatherApiUrl) {
         console.log(data);
     })
 }
+
+weatherData(weatherApiUrl);
