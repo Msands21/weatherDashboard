@@ -15,24 +15,22 @@ let recentSearches = document.querySelector(".cityList");
 dayjs.extend(window.dayjs_plugin_utc);
 dayjs.extend(window.dayjs_plugin_timezone);
 
+// 
 
 
-var weatherApiUrl = `http://api.openweathermap.org/geo/1.0/direct?appid=7ed2fa3c55bb5a9d8cb79cb7ce9d1e4b&q=Orlando`;
-//set up lat and long variable for api key and put in url $`{}`
 
-function weatherData(weatherApi) {
-    
-    fetch(weatherApi)
-    .then(function(res) {
-        res.json()
-    })
-    .then(function(data) {
-        console.log(data);
-    })
+
+// Fetch weather data from geolocation API
+var weatherApi = `http://api.openweathermap.org/geo/1.0/direct?appid=7ed2fa3c55bb5a9d8cb79cb7ce9d1e4b&q=Orlando`;
+async function weatherData() {
+    const response = await fetch(weatherApi);
+    const data = await response.json();
+    console.log(data);
+    let lat = data.lat;
+    let lon = data.lon;
 }
 
-
-weatherData(weatherApiUrl);
+weatherData ();
 
 
 // // Function for current weather --> set up temp/humidity/wind etc variables
